@@ -2,7 +2,7 @@ import fastify from "fastify";
 import { env } from "../env";
 import { authRoutes } from "./routes/auth";
 import cookie from "@fastify/cookie"
-import { usersRoutes } from "./routes/user";
+import { usersRoutes } from "./routes/users";
 import { mealsRoutes } from "./routes/meals";
 
 const app = fastify();
