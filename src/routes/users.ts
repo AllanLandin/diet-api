@@ -10,7 +10,7 @@ export async function usersRoutes(app: FastifyInstance){
 
         const {id: userId} = paramsSchema.parse(req.params)
 
-        const [totalMeals] = await db('meals').where({"user_Id": userId}).count()
+        const [totalMeals] = await db('meals').where({"user_id": userId}).count()
 
         return reply.status(200).send({totalMeals: totalMeals['count(*)']})
     })
@@ -22,7 +22,7 @@ export async function usersRoutes(app: FastifyInstance){
 
         const {id: userId} = paramsSchema.parse(req.params)
 
-        const [totalMeals] = await db('meals').where({"user_Id": userId, 'is_in_diet': true}).count()
+        const [totalMeals] = await db('meals').where({"user_id": userId, 'is_in_diet': true}).count()
 
         return reply.status(200).send({totalMealsInDiet: totalMeals['count(*)']})
     })
@@ -34,7 +34,7 @@ export async function usersRoutes(app: FastifyInstance){
 
         const {id: userId} = paramsSchema.parse(req.params)
 
-        const [totalMeals] = await db('meals').where({"user_Id": userId, 'is_in_diet': false}).count()
+        const [totalMeals] = await db('meals').where({"user_id": userId, 'is_in_diet': false}).count()
 
         return reply.status(200).send({totalMealsOutDiet: totalMeals['count(*)']})
     })
@@ -46,7 +46,7 @@ export async function usersRoutes(app: FastifyInstance){
 
         const {id: userId} = paramsSchema.parse(req.params)
 
-        const mealsSorted = await db('meals').where({"user_Id": userId}).select("*").orderBy('date', 'desc')
+        const mealsSorted = await db('meals').where({"user_id": userId}).select("*").orderBy('date', 'desc')
 
         let betterSequence = 0
         let currSequence = 0
