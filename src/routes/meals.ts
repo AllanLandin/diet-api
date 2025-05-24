@@ -63,7 +63,7 @@ export async function mealsRoutes(app: FastifyInstance) {
     app.get("/", async (req, reply)=>{
         const {id: userId} = req.user
 
-        const meals = await db('meals').where('user_id', userId).select("*")
+        const meals = await db('meals').where('user_id', userId).select("*").orderBy("date", 'desc')
 
         return reply.send(meals)
     })
@@ -77,11 +77,11 @@ export async function mealsRoutes(app: FastifyInstance) {
         
         const {id: userId} = req.user
 
-        const meals = await db('meals').where({'id': mealId, 'user_id': userId}).select("*")
+        const meal = await db('meals').where({'id': mealId, 'user_id': userId}).select("*").first()
         
-        if(!meals[0]) return reply.status(404).send({message: "meal not found"})
+        if(!meal) return reply.status(404).send({message: "meal not found"})
         
-        return reply.status(200).send(meals)
+        return reply.status(200).send(meal)
     })
 
     app.delete('/:id', async (req, reply)=>{
