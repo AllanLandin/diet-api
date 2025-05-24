@@ -4,7 +4,7 @@ import { env } from "../../env";
 export const knexConfig: knex.Knex.Config = {
   client: env.DATABASE_CLIENT,
   connection: {
-    filename: "./db/app.db",
+    filename: "./src/db/app.db",
   },
   useNullAsDefault: true,
   migrations: {
