@@ -4,6 +4,7 @@ import "dotenv/config";
 const envSchema = z.object({
   PORT: z.coerce.number().default(3333),
   DATABASE_CLIENT: z.string(),
+  DATABASE_URL: z.string(),
   JWT_SECRET: z.string()
 });
 

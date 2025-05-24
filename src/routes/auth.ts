@@ -3,7 +3,7 @@ import { z } from "zod";
 import { db } from "../db/database";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import { env } from "../../env";
+import { env } from "../env";
 
 export async function authRoutes(app: FastifyInstance){
     app.post("/register", async (req, reply)=>{

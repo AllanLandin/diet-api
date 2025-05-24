@@ -1,7 +1,7 @@
 import fastify from "fastify";
-import { env } from "../env";
-import { authRoutes } from "./routes/auth";
+import { env } from "./env";
 import cookie from "@fastify/cookie"
+import { authRoutes } from "./routes/auth";
 import { usersRoutes } from "./routes/users";
 import { mealsRoutes } from "./routes/meals";
 

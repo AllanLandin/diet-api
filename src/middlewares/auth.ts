@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import jwt from "jsonwebtoken"
-import { env } from "../../env";
+import { env } from "../env";
 import { UserPayload } from "../@types/fastify";
 
 export async function authMiddleware(req: FastifyRequest, reply: FastifyReply) {
