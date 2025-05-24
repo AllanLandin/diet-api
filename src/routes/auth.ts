@@ -53,9 +53,11 @@ export async function authRoutes(app: FastifyInstance){
               
         if(!user || !await bcrypt.compare(password, user.password)) reply.status(401).send("invalid credentials!")
 
-        const token = jwt.sign({name: user.name, email: user.email}, env.JWT_SECRET, {expiresIn: 1000 * 60 * 60 * 24 * 7})
+        const maxAgeTokenInMS = 1000 * 60 * 60 * 24 * 7 // 7 days
+
+        const token = jwt.sign({id: user.id, email: user.email}, env.JWT_SECRET, {expiresIn: maxAgeTokenInMS})
       
-        return reply.setCookie("token", token, {path: "/"}).status(200).send({message: "logged successfully"})
+        return reply.setCookie("token", token, {path: "/", maxAge: maxAgeTokenInMS}).status(200).send({message: "logged successfully"})
     })
     
 }
