@@ -20,7 +20,7 @@ Esse projeto é uma API construída em NodeJS que gerencia as refeições dos us
 # Como rodar o projeto ❔
 
 ## Produção 🗺️
-Para acessar a API em produção, acesse o link do projeto.
+Para acessar a API em produção, acesse o link do projeto vinculado a este repositório.
 
 ## Localmente 💻
 
